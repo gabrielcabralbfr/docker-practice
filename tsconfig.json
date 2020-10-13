@@ -22,10 +22,21 @@
         "resolveJsonModule": true,
         "baseUrl": ".",
         "paths": {
-            "@controllers/*": ["./src/controllers/*"],
-            "@models/*": ["./src/models/*"],
-            "@repository/*": ["./src/repository/*"],
-            "@config/*": ["./src/config/*"]
+            "@controllers/*": [
+                "./src/controllers/*"
+            ],
+            "@models/*": [
+                "./src/models/*"
+            ],
+            "@repository/*": [
+                "./src/repository/*"
+            ],
+            "@config/*": [
+                "./src/config/*"
+            ]
         }
-    }
+    },
+    "include": [
+        "src/**/*"
+    ]
 }
