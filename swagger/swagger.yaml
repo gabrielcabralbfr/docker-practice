@@ -40,6 +40,17 @@ consumes:
 schemes:
   - https
 paths:
+  /:
+    summary: Root
+    description: Optional extended description in Markdown.
+    produces:
+      - application/json
+    responses:
+      "200":
+        description: OK
+      "500":
+        description: Unexpected Error
+
   /users:
     get:
       summary: Returns a list of users.
@@ -74,7 +85,7 @@ paths:
           description: Bad Request
         "401":
           description: Unauthorized
-  "/users/{id}":
+  /users/{id}:
     put:
       summary: Updates an user.
       description: >-
@@ -144,8 +155,8 @@ paths:
           description: Unauthorized
         "404":
           description: Resource not found
-securityDefinitions:
-  BasicAuth:
-    type: basic
-security:
-  - BasicAuth: []
+# securityDefinitions:
+#   BasicAuth:
+#     type: basic
+# security:
+#   - BasicAuth: []
