@@ -1,0 +1,151 @@
+swagger: "2.0"
+info:
+  title: API Metodologias Ativas
+  description: API designed to enable teachers to work with any kind of active methodology
+  version: 1.0.0
+host: api.metodologias.com
+basePath: /v1
+definitions:
+  User:
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 4
+      name:
+        type: string
+        example: Jhon Doe
+      email:
+        type: string
+        example: example@example.com
+      password:
+        type: string
+      phone:
+        type: string
+        example: 5521993459001
+      cpf:
+        type: string
+        example: 16317239787
+    required:
+      - id
+      - name
+      - email
+      - password
+      - cpf
+      - phone
+produces:
+  - application/json
+consumes:
+  - application/json
+schemes:
+  - https
+paths:
+  /users:
+    get:
+      summary: Returns a list of users.
+      description: Optional extended description in Markdown.
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/User"
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+    post:
+      summary: Creates a user.
+      description: Optional extended description in Markdown.
+      parameters:
+        - in: body
+          name: user
+          schema:
+            $ref: "#/definitions/User"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/User"
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+  "/users/{id}":
+    put:
+      summary: Updates an user.
+      description: >-
+        Creates a new resource or replaces a representation of the user with the
+        request payload.
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: integer
+          minimum: 1
+          description: User id
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/User"
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "404":
+          description: Resource not found
+    patch:
+      summary: Updates an user.
+      description: Applies partial modifications to an user.
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/User"
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "404":
+          description: Resource not found
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: integer
+          minimum: 1
+          description: User id
+    delete:
+      summary: Deletes a user.
+      description: Optional extended description in Markdown.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: integer
+          minimum: 1
+          description: User id
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "404":
+          description: Resource not found
+securityDefinitions:
+  BasicAuth:
+    type: basic
+security:
+  - BasicAuth: []
