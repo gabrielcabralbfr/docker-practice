@@ -1,1 +1,3 @@
-# Practicing docker
+# NodeJS Application
+- Docker
+- Swagger
